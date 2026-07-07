@@ -315,3 +315,165 @@ department_summary.to_csv(
 
 # create new .csv file of department summary
 
+print("\n" + "=" * 60)
+print("ATTENDANCE ANALYTICS")
+print("=" * 60)
+
+# Attendance analytics
+
+df["Attendance_Status"] = df["Attendance"].apply(
+    lambda attendance: "Good" if attendance >= 75 else "Low"
+)
+
+print("\nAttendance Status Added Successfully.")
+
+# It show the attendance status for given dataset
+
+average_attendance = df["Attendance"].mean()
+
+print(
+    f"\nOverall Average Attendance : {average_attendance:.2f}%"
+)
+
+#  Overall average attendance of given dataset
+
+highest_attendance = df.loc[
+    df["Attendance"].idxmax()
+]
+
+print("\nHighest Attendance Student")
+
+print("----------------------------")
+
+print(highest_attendance[
+    [
+        "Roll_No",
+        "Name",
+        "Department",
+        "Attendance"
+    ]
+])
+
+# Highest number of student in attendance 
+
+lowest_attendance = df.loc[
+    df["Attendance"].idxmin()
+]
+
+print("\nLowest Attendance Student")
+
+print("---------------------------")
+
+print(
+    lowest_attendance[
+        [
+            "Roll_No",
+            "Name",
+            "Department",
+            "Attendance"
+        ]
+    ]
+)
+
+# Lowest number of student in attendance
+
+low_attendance = df[
+    df["Attendance"] < 75
+]
+
+print("\nStudents Below 75% Attendance")
+
+print("--------------------------------")
+
+print(
+    low_attendance[
+        [
+            "Roll_No",
+            "Name",
+            "Department",
+            "Attendance"
+        ]
+    ]
+)
+
+# Student who has attendance below 75%
+
+attendance_summary = df[
+    "Attendance_Status"
+].value_counts()
+
+print("\nAttendance Summary")
+
+print("---------------------")
+
+print(attendance_summary)
+
+# counting the number student has has good/bad attendance summary
+
+department_attendance_report = (
+    df.groupby("Department")["Attendance"]
+    .agg(["count", "mean", "max", "min"])
+)
+
+department_attendance_report.columns = [
+    "Total Students",
+    "Average Attendance",
+    "Highest Attendance",
+    "Lowest Attendance"
+]
+
+print("\nDepartment Attendance Report")
+print("--------------------------------")
+print(department_attendance_report)
+
+# We create the format of department attendance report 
+
+department_attendance_report.to_csv(
+    "student_result/outputs/tables/attendance_report.csv"
+)
+
+# It store the department attendance report in folder of output/tables
+
+low_attendance.to_csv(
+    "student_result/outputs/tables/low_attendance_students.csv",
+    index=False
+)
+
+# it will store the data of the low attendance student to .csv format
+
+with open(
+    "student_result/outputs/reports/attendance_summary.txt",
+    "w"
+) as file:
+
+    file.write("="*50 + "\n")
+    file.write("ATTENDANCE ANALYTICS REPORT\n")
+    file.write("="*50 + "\n\n")
+
+    file.write(
+        f"Average Attendance : {average_attendance:.2f}%\n"
+    )
+
+    file.write(
+        f"Highest Attendance : {highest_attendance['Name']} ({highest_attendance['Attendance']}%)\n"
+    )
+
+    file.write(
+        f"Lowest Attendance : {lowest_attendance['Name']} ({lowest_attendance['Attendance']}%)\n"
+    )
+
+    file.write(
+        f"\nStudents Below 75% : {len(low_attendance)}\n"
+    )
+
+print("\nAttendance Summary Report Generated Successfully.")
+
+# It will ATTENDANCE ANALYTICS REPORT and saved to the folder of reports
+
+df.to_csv(
+    "student_result/data/processed/student_analyzed.csv",
+    index=False
+)
+
+#  it will update the table format of the student_analyzed.csv on folder of processed/data
+

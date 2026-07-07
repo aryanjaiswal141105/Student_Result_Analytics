@@ -1,0 +1,9 @@
+==================================================
+ATTENDANCE ANALYTICS REPORT
+==================================================
+
+Average Attendance : 83.08%
+Highest Attendance : Riddhi (99%)
+Lowest Attendance : Gaurav (60%)
+
+Students Below 75% : 12
