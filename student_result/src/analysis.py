@@ -199,3 +199,119 @@ bottom10.to_csv(
 )
 
 # It create new .csv file of the bottom 10 student on tables folder of outputs
+
+print("\n" + "="*60)
+print("DEPARTMENT PERFORMANCE ANALYSIS")
+print("="*60)
+
+# It Show the department performance analysis
+
+departments = df["Department"].unique()
+
+print("\nDepartments Available:")
+
+for dept in departments:
+    print(dept)
+
+print(f"\nTotal Departments : {len(departments)}")
+
+#  Total number of department are dataset
+
+department_count = df["Department"].value_counts()
+
+print("\nStudents in Each Department")
+
+print("-----------------------------")
+
+print(department_count)
+
+#  Number of students are each department 
+
+department_average = df.groupby("Department")["Average"].mean()
+
+print("\nDepartment Average Marks")
+
+print("---------------------------")
+
+print(department_average)
+
+# Average of all the department students in givne dataset 
+
+department_attendance = df.groupby("Department")["Attendance"].mean()
+
+print("\nDepartment Attendance")
+
+print("-------------------------")
+
+print(department_attendance)
+
+#  Department Wise students attendence list 
+
+print("\nDepartment Toppers")
+
+print("----------------------")
+
+for department in departments:
+
+    topper = df[df["Department"] == department]
+
+    topper = topper.loc[topper["Total"].idxmax()]
+
+    print("\nDepartment :", department)
+
+    print("Name :", topper["Name"])
+
+    print("Total :", topper["Total"])
+
+    print("Average :", topper["Average"])
+
+    print("Grade :", topper["Grade"])
+
+    #  Department wise student topper
+
+best_department = department_average.idxmax()
+
+best_average = department_average.max()
+
+print("\nBest Performing Department")
+
+print("------------------------------")
+
+print("Department :", best_department)
+
+print("Average :", round(best_average,2))
+
+#  Best performing  department students
+
+lowest_department = department_average.idxmin()
+
+lowest_average = department_average.min()
+
+print("\nLowest Performing Department")
+
+print("------------------------------")
+
+print("Department :", lowest_department)
+
+print("Average :", round(lowest_average,2))
+
+# lowest performing department students
+
+department_summary = pd.DataFrame({
+
+    "Average Marks": department_average,
+
+    "Average Attendance": department_attendance,
+
+    "Student Count": department_count
+
+})
+
+department_summary.to_csv(
+
+    "student_result/outputs/tables/department_report.csv"
+
+)
+
+# create new .csv file of department summary
+
