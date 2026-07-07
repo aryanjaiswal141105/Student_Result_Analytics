@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from utils import calculate_grade
 from utils import calculate_result
@@ -477,3 +478,119 @@ df.to_csv(
 
 #  it will update the table format of the student_analyzed.csv on folder of processed/data
 
+print("\n" + "=" * 60)
+print("GRADE DISTRIBUTION")
+print("=" * 60)
+
+grade_distribution = df["Grade"].value_counts()
+
+print(grade_distribution)
+
+# It describe the grade distribution
+
+grade_distribution.to_csv(
+    "student_result/outputs/tables/grade_distribution.csv"
+)
+
+# It create new file of grade distribution.csv
+
+department_average.plot(
+    kind="bar",
+    title="Department Average Marks"
+)
+
+plt.ylabel("Average Marks")
+
+plt.tight_layout()
+
+plt.savefig(
+    "student_result/outputs/graphs/department_average.png"
+)
+
+plt.close()
+
+#  Create the img of department average plot \
+
+department_attendance.plot(
+    kind="bar",
+    title="Department Attendance"
+)
+
+plt.ylabel("Attendance")
+
+plt.tight_layout()
+
+plt.savefig(
+    "student_result/outputs/graphs/attendance_chart.png"
+)
+
+plt.close()
+
+# create the img of department attendance 
+
+grade_distribution.plot(
+    kind="pie",
+    autopct="%1.1f%%"
+)
+
+plt.title("Grade Distribution")
+
+plt.ylabel("")
+
+plt.tight_layout()
+
+plt.savefig(
+    "student_result/outputs/graphs/grade_distribution.png"
+)
+
+plt.close()
+
+#  create the img of grade distribution 
+
+department_count.plot(
+    kind="bar"
+)
+
+plt.title("Students per Department")
+
+plt.tight_layout()
+
+plt.savefig(
+    "student_result/outputs/graphs/department_students.png"
+)
+
+plt.close()
+
+#  create the counting as per department wise
+
+with open(
+    "student_result/outputs/reports/final_project_report.txt",
+    "w"
+) as report:
+
+    report.write("=" * 60 + "\n")
+    report.write("STUDENT RESULT ANALYTICS REPORT\n")
+    report.write("=" * 60 + "\n\n")
+
+    report.write(f"Total Students : {total_students}\n")
+    report.write(f"Overall Average : {class_average:.2f}\n")
+    report.write(f"Highest Average : {highest_average:.2f}\n")
+    report.write(f"Lowest Average : {lowest_average:.2f}\n")
+    report.write(f"Pass Percentage : {pass_percentage:.2f}%\n")
+    report.write(f"Fail Percentage : {fail_percentage:.2f}%\n")
+    report.write(f"Average Attendance : {average_attendance:.2f}%\n")
+    report.write(f"Best Department : {best_department}\n")
+    report.write(f"Lowest Department : {lowest_department}\n")
+
+print("\nFinal Project Report Generated Successfully.")
+
+# final report of the student result analytics.
+
+df.to_csv(
+    "student_result/data/processed/student_analyzed.csv",
+    index=False
+)
+
+print("\nFinal Dataset Saved Successfully.")
+
+# it will update the final dataset on student_analyzed.csv

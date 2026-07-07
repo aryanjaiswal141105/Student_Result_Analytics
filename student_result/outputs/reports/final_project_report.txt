@@ -1,0 +1,13 @@
+============================================================
+STUDENT RESULT ANALYTICS REPORT
+============================================================
+
+Total Students : 50
+Overall Average : 74.08
+Highest Average : 97.00
+Lowest Average : 53.42
+Pass Percentage : 100.00%
+Fail Percentage : 0.00%
+Average Attendance : 83.08%
+Best Department : AI
+Lowest Department : CE
