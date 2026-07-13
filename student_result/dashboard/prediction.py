@@ -50,7 +50,7 @@ except:
 
 def show():
 
-    st.title("🤖 Student Prediction Dashboard")
+    st.title("Student Prediction Dashboard")
 
     st.markdown("---")
 

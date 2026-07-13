@@ -31,7 +31,7 @@ def load_dataset():
 
 def show():
 
-    st.title("📊 Student Analytics Dashboard")
+    st.title("Student Analytics Dashboard")
 
     st.markdown("---")
 
@@ -87,7 +87,7 @@ def show():
 
     highest = df.loc[df["Total"].idxmax()]
 
-    st.subheader("🏆 Highest Scorer")
+    st.subheader("Highest Scorer")
 
     st.write("Name :", highest["Name"])
     st.write("Department :", highest["Department"])
@@ -101,7 +101,7 @@ def show():
 
     lowest = df.loc[df["Total"].idxmin()]
 
-    st.subheader("📉 Lowest Scorer")
+    st.subheader("Lowest Scorer")
 
     st.write("Name :", lowest["Name"])
     st.write("Department :", lowest["Department"])
@@ -115,7 +115,7 @@ def show():
 
     class_average = round(df["Total"].mean(), 2)
 
-    st.subheader("📈 Class Average")
+    st.subheader("Class Average")
 
     st.success(class_average)
 
@@ -125,7 +125,7 @@ def show():
     # Department Average
     # -----------------------------------------
 
-    st.subheader("🏫 Department-wise Average")
+    st.subheader("Department-wise Average")
 
     department_average = (
         df.groupby("Department")["Total"]
@@ -145,7 +145,7 @@ def show():
     # Top 10 Students
     # -----------------------------------------
 
-    st.subheader("🥇 Top 10 Students")
+    st.subheader("Top 10 Students")
 
     top10 = (
         df.sort_values(
@@ -166,7 +166,7 @@ def show():
     # Bottom 10 Students
     # -----------------------------------------
 
-    st.subheader("📉 Bottom 10 Students")
+    st.subheader("Bottom 10 Students")
 
     bottom10 = (
         df.sort_values(

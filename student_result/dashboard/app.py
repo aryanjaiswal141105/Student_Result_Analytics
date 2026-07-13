@@ -8,11 +8,11 @@ import reports
 
 st.set_page_config(
     page_title="Student Result Analytics",
-    page_icon="🎓",
+    page_icon="",
     layout="wide"
 )
 
-st.sidebar.title("🎓 Student Result Analytics")
+st.sidebar.title("Student Result Analytics")
 
 page = st.sidebar.radio(
     "Select Page",

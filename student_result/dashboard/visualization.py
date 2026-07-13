@@ -45,7 +45,7 @@ def show_graph(title, filename):
 
 def show():
 
-    st.title("📈 Visualization Dashboard")
+    st.title("Visualization Dashboard")
 
     st.write(
         "All charts were generated in Phase 5 and are displayed below."
@@ -56,69 +56,69 @@ def show():
     # -----------------------------------------
 
     show_graph(
-        "📊 Department Average",
+        "Department Average",
         "bar_department_average.png"
     )
 
     # -----------------------------------------
 
     show_graph(
-        "🥧 Grade Distribution",
+        "Grade Distribution",
         "pie_grade_distribution.png"
     )
 
     # -----------------------------------------
 
     show_graph(
-        "📈 Average Marks Histogram",
+        "Average Marks Histogram",
         "histogram_average_marks.png"
     )
 
     # -----------------------------------------
 
     show_graph(
-        "📉 Student Marks Line Chart",
+        "Student Marks Line Chart",
         "line_student_marks.png"
     )
 
     # -----------------------------------------
 
     show_graph(
-        "📦 Department Marks Box Plot",
+        "Department Marks Box Plot",
         "boxplot_department_marks.png"
     )
 
     # -----------------------------------------
 
     show_graph(
-        "📊 Attendance Bar Chart",
+        "Attendance Bar Chart",
         "attendance_bar_chart.png"
     )
 
     # -----------------------------------------
 
     show_graph(
-        "📊 Attendance Chart",
+        "Attendance Chart",
         "attendance_chart.png"
     )
 
     # -----------------------------------------
 
     show_graph(
-        "🏫 Department Average",
+        "Department Average",
         "department_average.png"
     )
 
     # -----------------------------------------
 
     show_graph(
-        "🏫 Department Students",
+        "Department Students",
         "department_students.png"
     )
 
     # -----------------------------------------
 
     show_graph(
-        "🎓 Grade Distribution",
+        "Grade Distribution",
         "grade_distribution.png"
     )

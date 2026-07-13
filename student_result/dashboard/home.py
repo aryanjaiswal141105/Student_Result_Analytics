@@ -32,7 +32,7 @@ def load_dataset():
 
 def show():
 
-    st.title("🎓 Student Result Analytics Dashboard")
+    st.title("Student Result Analytics Dashboard")
 
     st.markdown("---")
 
@@ -56,7 +56,7 @@ and predict future performance using Machine Learning.
 
         return
 
-    st.header("📊 Project Statistics")
+    st.header("Project Statistics")
 
     col1, col2, col3 = st.columns(3)
 
@@ -83,7 +83,7 @@ and predict future performance using Machine Learning.
 
     st.markdown("---")
 
-    st.header("📋 Dataset Information")
+    st.header("Dataset Information")
 
     st.write("Rows :", df.shape[0])
 
@@ -95,7 +95,7 @@ and predict future performance using Machine Learning.
 
     st.markdown("---")
 
-    st.header("👀 Dataset Preview")
+    st.header("Dataset Preview")
 
     st.dataframe(
         df,
@@ -104,7 +104,7 @@ and predict future performance using Machine Learning.
 
     st.markdown("---")
 
-    st.header("📌 Project Workflow")
+    st.header("Project Workflow")
 
     st.code("""
 students.csv

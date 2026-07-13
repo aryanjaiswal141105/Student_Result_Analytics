@@ -58,7 +58,7 @@ def read_table(filename):
 
 def show():
 
-    st.title("📄 Reports Dashboard")
+    st.title("Reports Dashboard")
 
     st.markdown("---")
 
