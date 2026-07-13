@@ -124,6 +124,6 @@ Dashboard
 
     st.header("Developer")
 
-    st.success("Aryan Jaiswal")
+    st.success("Aryan Jaiswal & Dattav Shukla")
 
     st.write("Data Analytics & Machine Learning Internship Project")
