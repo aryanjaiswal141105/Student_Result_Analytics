@@ -1,14 +1,10 @@
 import streamlit as st
 
-from services.analytics_service import (
-    load_dataset,
-    total_students,
-    total_columns,
-    total_departments
-)
-
-from dashboard.home import show_home
-
+import home
+import analytics
+import visualization
+import prediction
+import reports
 
 st.set_page_config(
     page_title="Student Result Analytics",
@@ -16,65 +12,30 @@ st.set_page_config(
     layout="wide"
 )
 
-# ----------------------------
-# Sidebar
-# ----------------------------
+st.sidebar.title("🎓 Student Result Analytics")
 
-st.sidebar.title("Student Result Analytics")
+page = st.sidebar.radio(
+    "Select Page",
+    [
+        "Home",
+        "Analytics",
+        "Visualization",
+        "Prediction",
+        "Reports"
+    ]
+)
 
-st.sidebar.success("Dashboard Running")
+if page == "Home":
+    home.show()
 
-# ----------------------------
-# Load Dataset
-# ----------------------------
+elif page == "Analytics":
+    analytics.show()
 
-try:
+elif page == "Visualization":
+    visualization.show()
 
-    df = load_dataset()
+elif page == "Prediction":
+    prediction.show()
 
-except Exception as e:
-
-    st.error(f"Dataset Loading Error\n\n{e}")
-
-    st.stop()
-
-# ----------------------------
-# Show Home Page
-# ----------------------------
-
-show_home(df)
-
-# ----------------------------
-# Dashboard Summary
-# ----------------------------
-
-st.markdown("---")
-
-st.subheader("Dashboard Summary")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-
-    st.metric(
-        "Total Students",
-        total_students(df)
-    )
-
-with col2:
-
-    st.metric(
-        "Columns",
-        total_columns(df)
-    )
-
-with col3:
-
-    st.metric(
-        "Departments",
-        total_departments(df)
-    )
-
-st.markdown("---")
-
-st.success("Setup is Completed Successfully")
+elif page == "Reports":
+    reports.show()

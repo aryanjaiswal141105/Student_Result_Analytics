@@ -1,9 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from utils import calculate_grade
-from utils import calculate_result
-
+from src.utils import (
+    calculate_grade,
+    calculate_result,
+    calculate_total,
+)
 
 # Load cleaned dataset
 
@@ -594,3 +596,44 @@ df.to_csv(
 print("\nFinal Dataset Saved Successfully.")
 
 # it will update the final dataset on student_analyzed.csv
+
+def get_total_students(df):
+    return len(df)
+
+def get_total_departments(df):
+    return df["Department"].nunique()
+
+def get_pass_count(df):
+    return len(df[df["Result"] == "Pass"])
+
+def get_fail_count(df):
+    return len(df[df["Result"] == "Fail"])
+
+def get_highest_scorer(df):
+    return df.loc[df["Total"].idxmax()]
+
+def get_lowest_scorer(df):
+    return df.loc[df["Total"].idxmin()]
+
+def get_class_average(df):
+    return round(df["Total"].mean(), 2)
+
+def get_department_average(df):
+    return (
+        df.groupby("Department")["Total"]
+        .mean()
+        .round(2)
+        .reset_index()
+    )
+
+def get_top10_students(df):
+    return (
+        df.sort_values("Total", ascending=False)
+        .head(10)
+    )
+
+def get_bottom10_students(df):
+    return (
+        df.sort_values("Total")
+        .head(10)
+    )
